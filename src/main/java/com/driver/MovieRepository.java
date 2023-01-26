@@ -47,8 +47,8 @@ public class MovieRepository {
     }
 
     public ArrayList<String> getMoviesByDirectorName(String name){       //6
-        ArrayList<String> list= helperDir(name);
-        return list;
+        return helperDir(name);
+
     }
 
 

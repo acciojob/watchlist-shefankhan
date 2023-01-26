@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class MovieController {
@@ -42,22 +43,22 @@ public class MovieController {
     }
     @GetMapping("/movies/get-movies-by-director-name/{director}")                                    //6
     public ResponseEntity getMoviesByDirectorName(@PathVariable("name") String name){ //RIGHT
-        ArrayList<String> response = movieService.getMoviesByDirectorName(name);
+        List<String> response  = movieService.getMoviesByDirectorName(name);
         return new ResponseEntity<>(response, HttpStatus.NOT_ACCEPTABLE);
 
 
     }
     @GetMapping("/movies/get-all-movies")                                               //7
     public ResponseEntity findAllMovies(){
-        ArrayList<String> response= movieService.findAllMovies();
+        List<String> response = movieService.findAllMovies();
         return new ResponseEntity<>(response, HttpStatus.NOT_ACCEPTABLE);
     }
-    @DeleteMapping("/movies/delete-director-by-name")                                         //8
+    @DeleteMapping("/movies/delete-director-by-name")
     public ResponseEntity deleteDirectorByName(@RequestParam("dirName") String dirName){
         String response = movieService.deleteDirectorByName(dirName);
        return new ResponseEntity<>(response, HttpStatus.NOT_ACCEPTABLE);
     }
-    @DeleteMapping("/movies/delete-all-directors")                                              //9
+    @DeleteMapping("/movies/delete-all-directors")
     public ResponseEntity deleteAllDirectors(){
         String response= movieService.deleteAllDirectors();
         return new ResponseEntity<>(response, HttpStatus.NOT_ACCEPTABLE);

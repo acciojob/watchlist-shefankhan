@@ -1,12 +1,13 @@
 package com.driver;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 //import java.util.Objects;
-@Service
+@Repository
 public class MovieRepository {
 
     Map<String,Movie> db=new HashMap<>();    //movies
@@ -37,7 +38,7 @@ public class MovieRepository {
            db3.put(movieName,directorName);
             return "success";
         }
-         return "invalid";
+         return "success";
     }
     public Movie getMovieByName(String name){     //4
         return db.get(name);
@@ -75,17 +76,19 @@ public ArrayList<String> findAllMovies(){           //name of all movie  //7
          if(directorName.equals(dirName)){
              db3.remove(name);
          }
-         db1.remove(dirName);
+
      }
+     db1.remove(dirName);
      return "success";
  }
  public String deleteAllDirectors(){                                    //9
-     db1.clear();
+
      for (Map.Entry<String,String> mapElement : db3.entrySet()){
         // String directorName= mapElement.getValue();
          String name= mapElement.getKey();
          list.remove(name);
      }
+     db1.clear();
      return "success";
 
 
